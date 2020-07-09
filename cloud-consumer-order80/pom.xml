@@ -12,21 +12,10 @@
     <artifactId>cloud-consumer-order80</artifactId>
 
     <dependencies>
-<!--        &lt;!&ndash;包含了sleuth+zipkin&ndash;&gt;
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <artifactId>spring-cloud-netflix-eureka-client</artifactId>
         </dependency>
-        &lt;!&ndash;eureka-client&ndash;&gt;
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.liuscoding</groupId>
-            <artifactId>cloud-api-commons</artifactId>
-            <version>${project.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>com.dyw.springcloud</groupId>
             <artifactId>cloud-api-common</artifactId>
