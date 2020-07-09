@@ -13,7 +13,8 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @Slf4j
 public class OrderController {
-    public static final String PAYMENT_URL = "http://localhost:8001";
+//    public static final String PAYMENT_URL = "http://localhost:8001";  //单机
+    public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";  //在Eureka中注册的服务名
 
     @Autowired
     RestTemplate restTemplate;
