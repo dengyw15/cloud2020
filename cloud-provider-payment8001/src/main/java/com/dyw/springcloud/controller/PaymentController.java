@@ -3,11 +3,18 @@ package com.dyw.springcloud.controller;
 import com.dyw.springcloud.entities.CommonResult;
 import com.dyw.springcloud.entities.Payment;
 import com.dyw.springcloud.service.PaymentService;
+import com.netflix.discovery.DiscoveryClient;
+import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -19,6 +26,9 @@ public class PaymentController {
 
     @Value("${server.port}")
     String strPort;
+
+    @Autowired
+    private EurekaDiscoveryClient discoveryClient;
 
     @PostMapping("/payment/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -42,5 +52,25 @@ public class PaymentController {
         } else {
             return new CommonResult(444, "查询失败, port=" + strPort);
         }
+    }
+
+    @GetMapping("/payment/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        services.stream().forEach(service -> {
+            System.out.println(service);
+            List<ServiceInstance> instances = discoveryClient.getInstances(service);
+            instances.stream().forEach(serviceInstance -> {
+                System.out.println("[" + service + "] serviceid= " + serviceInstance.getServiceId());
+                System.out.println("[" + service + "] host= " + serviceInstance.getHost());
+                System.out.println("[" + service + "] instanceId= " + serviceInstance.getInstanceId());
+                System.out.println("[" + service + "] schema= " + serviceInstance.getScheme());
+                System.out.println("[" + service + "] port= " + serviceInstance.getPort());
+                System.out.println("[" + service + "] uri= " + serviceInstance.getUri());
+            });
+        });
+
+
+        return discoveryClient;
     }
 }
