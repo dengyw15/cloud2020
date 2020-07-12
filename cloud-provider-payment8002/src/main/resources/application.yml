@@ -21,6 +21,9 @@ eureka:
   instance:
     instance-id: payment8002   #注册到eureka上面的id
     prefer-ip-address: true  #可以在eureka注册中心中显示具体的微服务ip
+    lease-renewal-interval-in-seconds: 30  #Eureka客户端向服务端发送心跳的时间间隔（秒）
+    lease-expiration-duration-in-seconds: 20 #Eureka服务器收到客户端最后一次心跳的等待上限，超时后就剔除服务
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.dyw.springcloud.entities
