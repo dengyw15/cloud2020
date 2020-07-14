@@ -2,9 +2,11 @@
 
 # 说明
 
-payment8001/8002 是注册在Eureka注册中心
+* payment8001/8002 是注册在Eureka注册中心
 
 server7001 关闭了服务自我保护    payment8001 设置心跳发送数据
+
+* ribbon是在客户端的负载均衡，因此在本工程中是需要配置在consumer-Order80模块中
 
 # maven依赖
 
