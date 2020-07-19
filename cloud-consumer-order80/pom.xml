@@ -12,6 +12,7 @@
     <artifactId>cloud-consumer-order80</artifactId>
 
     <dependencies>
+        <!-- spring-cloud-starter-netflix-eureka-client 中已经包含了ribbon的引用，不需要再单独添加引用-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

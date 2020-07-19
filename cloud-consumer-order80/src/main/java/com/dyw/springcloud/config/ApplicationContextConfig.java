@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class ApplicationContextConfig {
 
     @Bean
-    @LoadBalanced
+//    @LoadBalanced  //用于测试自定义ribbon轮询算法MyLoadBalancer，暂时注释
     public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }

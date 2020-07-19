@@ -73,4 +73,10 @@ public class PaymentController {
 
         return discoveryClient;
     }
+
+    //用于测试自定义ribbon轮询算法
+    @GetMapping("/payment/myLb")
+    public String getPortByMyLb() {
+        return strPort;
+    }
 }
