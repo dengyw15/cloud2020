@@ -13,7 +13,7 @@ import java.util.UUID;
 @RequestMapping("/payment8004")
 public class Payment8004Controller {
 
-    @Value("${server.port}")
+    @Value("${service.port}")
     String strPort;
 
     @Autowired

@@ -8,6 +8,8 @@ server7001 关闭了服务自我保护    payment8001 设置心跳发送数据
 
 * ribbon是在客户端的负载均衡，因此在本工程中是需要配置在consumer-Order80模块中
 
+* 开始使用Ribbon+RestTemplate实现服务调用和负载均衡， 后可以使用OpenFeign直接实现，feign是用在消费端（client端）
+
 # maven依赖
 
 ## Eureka Clinent 导入的依赖
