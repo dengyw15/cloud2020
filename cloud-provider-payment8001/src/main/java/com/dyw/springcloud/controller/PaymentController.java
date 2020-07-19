@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -77,6 +78,17 @@ public class PaymentController {
     //用于测试自定义ribbon轮询算法
     @GetMapping("/payment/myLb")
     public String getPortByMyLb() {
+        return strPort;
+    }
+
+    //用于测试自定义OpenFeign超时时间
+    @GetMapping("/payment/feign/timeout")
+    public String paymentTimeOut() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return strPort;
     }
 }

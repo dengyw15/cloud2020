@@ -11,3 +11,15 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #集群
+
+#Feign 超时时间设置
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000 #Feign的连接建立超时时间
+        readTimeout: 60000 #Feign的请求处理超时时间
+logging:
+  level:
+    #Feign 日志以debug级别监控PaymengService接口
+    com.dyw.springcloud.service.PaymentService: debug
