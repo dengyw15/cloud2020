@@ -21,13 +21,13 @@ public class PaymentServiceImpl implements PaymentService {
     })
     public String payment_timeout(Integer id) {
 
-        int age = 10 /0; //运行异常也会走到兜底的timeouthandler方法
-/*        int time = 1;
+//        int age = 10 /0; //运行异常也会走到兜底的timeouthandler方法
+        int time = 1;
         try {
             TimeUnit.SECONDS.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
         return "Timeout Thread: " + Thread.currentThread().getName() + " timeout, id=" + id;
     }
 
